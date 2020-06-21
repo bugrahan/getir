@@ -1,5 +1,3 @@
-console.log('Hello Word from Getir')
-
 const express = require('express')
 require('./db/mongoose')
 const recordRouter = require('./routers/record')
@@ -10,5 +8,3 @@ app.use(express.json())
 app.use(recordRouter)
 
 module.exports = app
-
-
