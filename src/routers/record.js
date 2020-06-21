@@ -4,11 +4,10 @@ const router = new express.Router()
 
 router.get('/records', async (req, res) => {
     
-    console.log('geldim')
     const records = await Record.find({}).then((records) => {
-        console.log(records)
+        res.status(200).send({records})
     }).catch((e) => {
-        console.log(e)
+        res.status(400).send()
     })
 })
 
