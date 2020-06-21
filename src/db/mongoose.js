@@ -10,5 +10,5 @@ mongoose.connect(connectionURL, {
 }).then(() => {
     console.log('Connection successfull!')
 }).catch(() => {
-    console.log('error: ', e)
+    console.log('Connection error: ', e)
 })
