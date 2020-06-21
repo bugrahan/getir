@@ -13,6 +13,17 @@ router.get('/records', async (req, res) => {
 
 router.post('/records', async (req, res) => {
 
+    const params = ['startDate', 'endDate', 'minCount', 'maxCount']
+    const isParamsValid = Object.keys(req.body).every((param) => params.includes(param))
+
+    if (!isParamsValid || params.length !== 4) {
+        return res.status(400).send({
+            code: 2,
+            msg: 'Request body is not valid'
+        })
+    }
+
+
     const records = await Record.aggregate([
         {
             $project: {
@@ -38,16 +49,16 @@ router.post('/records', async (req, res) => {
             
         }
     ]).then((recordsData) => {
-        console.log(req.body)
-        console.log(recordsData)
         res.status(200).send({
-            code: 1,
+            code: 0,
             msg: 'Success',
             records: recordsData
         })
     }).catch((e) => {
-        console.log(e)
-        res.status(400).send()
+        res.status(500).send({
+            code: 1,
+            msg: 'Error: ' + e
+        })
     })
 
 })
