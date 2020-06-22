@@ -35,7 +35,7 @@ router.post('/records', [
             $match: {
                 createdAt: {
                     $gte: new Date(req.body.startDate),
-                    $lte: new Date(req.body.endDate)
+                    $lt: new Date(req.body.endDate)
                 },
                 totalNumber: {
                     $gte: req.body.minCount,
