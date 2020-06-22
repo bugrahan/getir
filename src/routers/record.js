@@ -3,14 +3,6 @@ const Record = require('../models/record')
 const router = new express.Router()
 const {check, validationResult} = require('express-validator')
 
-router.get('/records', async (req, res) => {
-    
-    const records = await Record.find({}).then((records) => {
-        res.status(200).send({records})
-    }).catch((e) => {
-        res.status(400).send()
-    })
-})
 
 router.post('/records', [
     check('startDate', 'startDate should be a date.').isDate(),
