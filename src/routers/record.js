@@ -8,8 +8,8 @@ const {check, validationResult} = require('express-validator')
 router.post('/records', [
     check('startDate', 'startDate should be a date.').isDate(),
     check('endDate', 'endDate should be a date.').isDate(),
-    check('maxCount', 'maxCount should be an integer').toInt().isInt(),
-    check('minCount', 'minCount should be an integer').toInt().isInt()
+    check('maxCount', 'maxCount should be an integer.').toInt().isInt(),
+    check('minCount', 'minCount should be an integer.').toInt().isInt()
 
 ], async (req, res) => {
     const errors = await validationResult(req);
