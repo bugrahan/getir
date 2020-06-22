@@ -9,6 +9,17 @@ test('Successful request', async () => {
         "minCount": 153,
         "maxCount": 153
     }).expect(200)
+    expect(response.body).toEqual({
+        code: 0,
+        msg: "Success",
+        records: [
+            {
+                key: "vFxMiAmY",
+                createdAt: "2016-12-12T16:53:02.506Z",
+                totalNumber: 153
+            }
+        ]
+    })
 })
 
 
