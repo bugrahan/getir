@@ -4,6 +4,14 @@ const router = new express.Router()
 const {check, validationResult} = require('express-validator')
 
 
+router.get('/', async (req, res) => {
+    res.status(205).send({
+        code: 0,
+        msg: 'Success',
+        records: "bugrahan"
+    })
+})
+
 router.post('/records', [
     check('startDate', 'startDate should be a date.').isDate(),
     check('endDate', 'endDate should be a date.').isDate(),
